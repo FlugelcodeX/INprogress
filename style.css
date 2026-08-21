@@ -1,0 +1,1873 @@
+/* =========================================
+   CYBER UNDER CONSTRUCTION
+   NEON BLUE EDITION
+========================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap");
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+:root {
+  --black: #020509;
+  --black-2: #050b12;
+  --black-3: #08111b;
+
+  --blue: #00aaff;
+  --blue-light: #54d8ff;
+  --blue-bright: #00eaff;
+
+  --blue-dark: #0066ff;
+
+  --purple: #6f5cff;
+
+  --white: #eafaff;
+
+  --gray: #7893a3;
+
+  --border: rgba(0, 174, 255, 0.28);
+
+  --glow: rgba(0, 174, 255, 0.45);
+}
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+  margin: 0;
+
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--black);
+
+  color: var(--white);
+
+  font-family: "Inter", sans-serif;
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+}
+
+/* =========================================
+   BODY GLOW
+========================================= */
+
+body::before {
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: -10;
+
+  background:
+    radial-gradient(circle at 50% 35%, rgba(0, 150, 255, 0.1), transparent 38%),
+    radial-gradient(circle at 10% 80%, rgba(0, 90, 255, 0.07), transparent 30%),
+    #020509;
+}
+
+/* =========================================
+   CIRCUIT BACKGROUND
+========================================= */
+
+.circuit-bg {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: -5;
+
+  overflow: hidden;
+
+  opacity: 0.7;
+}
+
+/* =========================================
+   CIRCUIT LINES
+========================================= */
+
+.circuit-line {
+  position: absolute;
+
+  height: 1px;
+
+  background: linear-gradient(90deg, transparent, var(--blue), transparent);
+
+  opacity: 0.35;
+
+  box-shadow: 0 0 8px var(--blue);
+}
+
+.line-1 {
+  width: 45%;
+
+  top: 15%;
+
+  left: -5%;
+
+  transform: rotate(12deg);
+}
+
+.line-2 {
+  width: 55%;
+
+  top: 30%;
+
+  right: -10%;
+
+  transform: rotate(-8deg);
+}
+
+.line-3 {
+  width: 40%;
+
+  top: 55%;
+
+  left: -5%;
+
+  transform: rotate(-15deg);
+}
+
+.line-4 {
+  width: 60%;
+
+  top: 70%;
+
+  right: -15%;
+
+  transform: rotate(9deg);
+}
+
+.line-5 {
+  width: 35%;
+
+  top: 87%;
+
+  left: 10%;
+
+  transform: rotate(-5deg);
+}
+
+.line-6 {
+  width: 50%;
+
+  top: 45%;
+
+  right: 15%;
+
+  transform: rotate(18deg);
+}
+
+/* =========================================
+   MOVING ELECTRICITY
+========================================= */
+
+.circuit-line::after {
+  content: "";
+
+  position: absolute;
+
+  width: 70px;
+
+  height: 2px;
+
+  background: var(--blue-bright);
+
+  box-shadow:
+    0 0 10px var(--blue-bright),
+    0 0 25px var(--blue);
+
+  animation: electricity 3s linear infinite;
+}
+
+@keyframes electricity {
+  from {
+    left: -80px;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+/* =========================================
+   PCB NODES
+========================================= */
+
+.node {
+  position: absolute;
+
+  width: 7px;
+
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--blue-bright);
+
+  box-shadow:
+    0 0 8px var(--blue-bright),
+    0 0 20px var(--blue);
+
+  animation: nodePulse 2s infinite alternate;
+}
+
+@keyframes nodePulse {
+  from {
+    opacity: 0.3;
+
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scale(1.4);
+  }
+}
+
+.node-1 {
+  top: 13%;
+  left: 18%;
+}
+
+.node-2 {
+  top: 28%;
+  right: 20%;
+}
+
+.node-3 {
+  top: 52%;
+  left: 10%;
+}
+
+.node-4 {
+  top: 64%;
+  right: 13%;
+}
+
+.node-5 {
+  top: 82%;
+  left: 30%;
+}
+
+.node-6 {
+  top: 91%;
+  right: 30%;
+}
+
+.node-7 {
+  top: 41%;
+  left: 42%;
+}
+
+.node-8 {
+  top: 22%;
+  right: 42%;
+}
+
+/* =========================================
+   PAGE
+========================================= */
+
+.page {
+  width: min(1180px, 92%);
+
+  margin: auto;
+
+  position: relative;
+
+  padding: 70px 0 30px;
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+  min-height: 550px;
+
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+/* =========================================
+   STATUS PANEL
+========================================= */
+
+.status-panel {
+  width: min(760px, 90%);
+
+  background: linear-gradient(
+    145deg,
+    rgba(5, 20, 32, 0.95),
+    rgba(2, 8, 14, 0.97)
+  );
+
+  border: 1px solid var(--blue);
+
+  position: relative;
+
+  padding: 8px;
+
+  box-shadow:
+    0 0 15px rgba(0, 170, 255, 0.18),
+    0 0 70px rgba(0, 120, 255, 0.08),
+    inset 0 0 40px rgba(0, 150, 255, 0.04);
+
+  clip-path: polygon(
+    18px 0,
+    calc(100% - 18px) 0,
+    100% 18px,
+    100% calc(100% - 18px),
+    calc(100% - 18px) 100%,
+    18px 100%,
+    0 calc(100% - 18px),
+    0 18px
+  );
+}
+
+/* inner border */
+
+.status-panel::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 5px;
+
+  border: 1px solid rgba(0, 200, 255, 0.18);
+
+  pointer-events: none;
+}
+
+/* =========================================
+   PANEL TOP
+========================================= */
+
+.panel-top {
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0 22px;
+
+  border-bottom: 1px solid var(--border);
+
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+
+  color: var(--blue-light);
+}
+
+.status-light {
+  width: 7px;
+
+  height: 7px;
+
+  background: var(--blue-bright);
+
+  border-radius: 50%;
+
+  box-shadow: 0 0 10px var(--blue-bright);
+
+  animation: blink 1.2s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* =========================================
+   STATUS CONTENT
+========================================= */
+
+.status-content {
+  padding: 70px 45px 60px;
+
+  text-align: center;
+}
+
+.small-heading {
+  font-family: "Orbitron", sans-serif;
+
+  color: var(--blue);
+
+  font-size: 11px;
+
+  letter-spacing: 4px;
+
+  margin-bottom: 25px;
+}
+
+h1 {
+  font-family: "Orbitron", sans-serif;
+
+  font-size: clamp(38px, 6vw, 70px);
+
+  line-height: 1.05;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 20px;
+
+  text-shadow: 0 0 15px rgba(0, 180, 255, 0.35);
+}
+
+h1 strong {
+  display: block;
+
+  color: var(--blue-bright);
+
+  text-shadow:
+    0 0 10px var(--blue),
+    0 0 35px rgba(0, 190, 255, 0.5);
+}
+
+.subtitle {
+  color: var(--gray);
+
+  font-size: 14px;
+
+  margin-bottom: 40px;
+}
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.progress-info {
+  width: min(500px, 100%);
+
+  margin: auto;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+  color: var(--gray);
+}
+
+.progress-info span:last-child {
+  color: var(--blue-bright);
+}
+
+.progress-bar {
+  width: min(500px, 100%);
+
+  height: 7px;
+
+  background: #07111a;
+
+  border: 1px solid rgba(0, 170, 255, 0.25);
+
+  margin: 10px auto 20px;
+
+  overflow: hidden;
+}
+
+.progress {
+  width: 62%;
+
+  height: 100%;
+
+  background: repeating-linear-gradient(
+    90deg,
+    var(--blue),
+    var(--blue) 12px,
+    var(--blue-bright) 13px,
+    var(--blue-bright) 16px
+  );
+
+  box-shadow: 0 0 15px var(--blue);
+
+  animation: progressGlow 2s infinite alternate;
+}
+
+@keyframes progressGlow {
+  from {
+    filter: brightness(0.8);
+  }
+
+  to {
+    filter: brightness(1.3);
+  }
+}
+
+.system-message {
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+  color: #55788a;
+}
+
+.system-message span {
+  color: var(--blue-bright);
+}
+
+/* =========================================
+   CHIBI CHARACTERS
+========================================= */
+
+.chibi {
+  position: absolute;
+
+  width: 105px;
+
+  height: 190px;
+
+  z-index: 5;
+
+  filter: drop-shadow(0 0 12px rgba(0, 170, 255, 0.3));
+}
+
+.worker-left {
+  left: 0;
+
+  bottom: 45px;
+
+  transform: scale(0.9);
+}
+
+.worker-right {
+  right: 0;
+
+  bottom: 45px;
+
+  transform: scale(0.9);
+}
+
+/* =========================================
+   CHIBI HEAD
+========================================= */
+
+.chibi .head {
+  width: 72px;
+
+  height: 70px;
+
+  position: relative;
+
+  margin: auto;
+
+  background: #101b29;
+
+  border: 2px solid var(--blue);
+
+  border-radius: 38% 38% 45% 45%;
+
+  box-shadow: 0 0 12px rgba(0, 170, 255, 0.3);
+}
+
+.chibi .hair {
+  position: absolute;
+
+  top: -9px;
+
+  left: 5px;
+
+  width: 60px;
+
+  height: 28px;
+
+  background: #07101b;
+
+  border-radius: 60% 40% 20% 20%;
+
+  border-top: 3px solid var(--blue);
+}
+
+.face {
+  position: absolute;
+
+  left: 13px;
+
+  top: 25px;
+
+  width: 44px;
+
+  height: 28px;
+
+  background: #d7eaff;
+
+  border-radius: 45%;
+}
+
+.eye {
+  position: absolute;
+
+  width: 7px;
+
+  height: 10px;
+
+  background: var(--blue);
+
+  border-radius: 50%;
+
+  top: 10px;
+
+  box-shadow: 0 0 5px var(--blue);
+}
+
+.eye-left {
+  left: 10px;
+}
+
+.eye-right {
+  right: 10px;
+}
+
+/* =========================================
+   HEADSET
+========================================= */
+
+.headset {
+  position: absolute;
+
+  width: 80px;
+
+  height: 55px;
+
+  border: 3px solid var(--blue);
+
+  border-bottom: none;
+
+  border-radius: 40px 40px 0 0;
+
+  left: -5px;
+
+  top: 7px;
+}
+
+/* =========================================
+   VISOR
+========================================= */
+
+.visor {
+  position: absolute;
+
+  width: 58px;
+
+  height: 20px;
+
+  left: 7px;
+
+  top: 27px;
+
+  border: 2px solid var(--blue-bright);
+
+  background: rgba(0, 170, 255, 0.18);
+
+  box-shadow: 0 0 10px var(--blue);
+
+  border-radius: 5px;
+}
+
+/* =========================================
+   CHIBI BODY
+========================================= */
+
+.chibi .body {
+  width: 58px;
+
+  height: 72px;
+
+  margin: 0 auto;
+
+  background: #091421;
+
+  border: 2px solid var(--blue);
+
+  border-radius: 14px 14px 7px 7px;
+
+  position: relative;
+}
+
+.screen {
+  position: absolute;
+
+  width: 25px;
+
+  height: 18px;
+
+  top: 18px;
+
+  left: 15px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  font-family: monospace;
+
+  font-size: 8px;
+
+  color: var(--blue-bright);
+
+  border: 1px solid var(--blue);
+
+  box-shadow: 0 0 8px rgba(0, 170, 255, 0.3);
+}
+
+/* =========================================
+   ARMS
+========================================= */
+
+.arm {
+  position: absolute;
+
+  width: 15px;
+
+  height: 50px;
+
+  background: #0b1825;
+
+  border: 2px solid var(--blue);
+
+  border-radius: 10px;
+
+  top: 83px;
+}
+
+.arm-left {
+  left: 10px;
+
+  transform: rotate(25deg);
+}
+
+.arm-right {
+  right: 10px;
+
+  transform: rotate(-25deg);
+}
+
+/* =========================================
+   LEGS
+========================================= */
+
+.legs {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 12px;
+}
+
+.legs span {
+  width: 20px;
+
+  height: 42px;
+
+  background: #08121d;
+
+  border: 2px solid var(--blue);
+
+  border-radius: 0 0 8px 8px;
+}
+
+/* =========================================
+   ROBOT
+========================================= */
+
+.robot {
+  position: absolute;
+
+  bottom: 45px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 55px;
+
+  height: 65px;
+
+  z-index: 8;
+
+  animation: robotFloat 2s ease-in-out infinite;
+}
+
+@keyframes robotFloat {
+  50% {
+    transform: translateX(-50%) translateY(-7px);
+  }
+}
+
+.robot-head {
+  width: 45px;
+
+  height: 37px;
+
+  margin: auto;
+
+  border: 2px solid var(--blue);
+
+  background: #07131e;
+
+  border-radius: 12px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 9px;
+
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.3);
+}
+
+.robot-head span {
+  width: 6px;
+
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: var(--blue-bright);
+
+  box-shadow: 0 0 8px var(--blue-bright);
+}
+
+.robot-body {
+  width: 30px;
+
+  height: 25px;
+
+  margin: 3px auto;
+
+  background: #081522;
+
+  border: 2px solid var(--blue);
+
+  border-radius: 6px;
+}
+
+/* =========================================
+   FLOATING CODE
+========================================= */
+
+.code-float {
+  position: absolute;
+
+  font-family: "Orbitron", sans-serif;
+
+  color: var(--blue);
+
+  font-size: 16px;
+
+  opacity: 0.6;
+
+  text-shadow: 0 0 10px var(--blue);
+
+  animation: floatCode 3s ease-in-out infinite;
+}
+
+.code-1 {
+  left: 18%;
+
+  top: 20%;
+}
+
+.code-2 {
+  right: 18%;
+
+  top: 25%;
+
+  animation-delay: 1s;
+}
+
+.code-3 {
+  left: 25%;
+
+  bottom: 18%;
+
+  animation-delay: 1.5s;
+}
+
+@keyframes floatCode {
+  50% {
+    transform: translateY(-10px);
+
+    opacity: 1;
+  }
+}
+
+/* =========================================
+   FLOOR
+========================================= */
+
+.floor {
+  height: 60px;
+
+  position: relative;
+
+  margin-top: -40px;
+
+  opacity: 0.5;
+
+  overflow: hidden;
+}
+
+.floor-line {
+  position: absolute;
+
+  width: 100%;
+
+  height: 1px;
+
+  background: linear-gradient(90deg, transparent, var(--blue), transparent);
+
+  box-shadow: 0 0 8px var(--blue);
+}
+
+.floor-line:nth-child(1) {
+  top: 10px;
+}
+
+.floor-line:nth-child(2) {
+  top: 30px;
+}
+
+.floor-line:nth-child(3) {
+  top: 50px;
+}
+
+/* =========================================
+   SERVICES BAR
+========================================= */
+
+.services {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  border-top: 1px solid var(--border);
+
+  border-bottom: 1px solid var(--border);
+
+  margin-bottom: 100px;
+}
+
+.service {
+  padding: 25px 15px;
+
+  text-align: center;
+
+  border-right: 1px solid var(--border);
+
+  transition: 0.3s;
+}
+
+.service:last-child {
+  border-right: none;
+}
+
+.service:hover {
+  background: rgba(0, 170, 255, 0.04);
+
+  box-shadow: inset 0 -2px 0 var(--blue);
+}
+
+.service-icon {
+  display: block;
+
+  color: var(--blue-bright);
+
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 20px;
+
+  margin-bottom: 10px;
+
+  text-shadow: 0 0 10px var(--blue);
+}
+
+.service p {
+  font-family: "Orbitron", sans-serif;
+
+  color: #7593a3;
+
+  font-size: 8px;
+
+  letter-spacing: 1.5px;
+}
+
+/* =========================================
+   CONTACT SECTION
+========================================= */
+
+.contact {
+  display: grid;
+
+  grid-template-columns: 0.8fr 1.2fr;
+
+  gap: 70px;
+
+  align-items: start;
+
+  margin-bottom: 100px;
+}
+
+.contact-label {
+  font-family: "Orbitron", sans-serif;
+
+  color: var(--blue);
+
+  font-size: 10px;
+
+  letter-spacing: 3px;
+
+  margin-bottom: 20px;
+}
+
+.contact-info h2 {
+  font-family: "Orbitron", sans-serif;
+
+  font-size: clamp(35px, 5vw, 55px);
+
+  line-height: 1.1;
+
+  margin-bottom: 25px;
+}
+
+.contact-info h2 span {
+  display: block;
+
+  color: var(--blue-bright);
+
+  text-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
+}
+
+.contact-description {
+  color: var(--gray);
+
+  font-size: 14px;
+
+  line-height: 1.8;
+
+  margin-bottom: 10px;
+}
+
+/* =========================================
+   AVAILABLE
+========================================= */
+
+.availability {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  margin-top: 30px;
+
+  padding: 15px;
+
+  border: 1px solid var(--border);
+
+  background: rgba(0, 170, 255, 0.025);
+}
+
+.pulse {
+  width: 8px;
+
+  height: 8px;
+
+  background: var(--blue-bright);
+
+  border-radius: 50%;
+
+  box-shadow: 0 0 10px var(--blue-bright);
+
+  animation: blink 1.5s infinite;
+}
+
+.availability strong {
+  display: block;
+
+  font-family: "Orbitron", sans-serif;
+
+  color: var(--blue-light);
+
+  font-size: 9px;
+
+  letter-spacing: 1px;
+}
+
+.availability small {
+  display: block;
+
+  color: #536d7b;
+
+  font-size: 9px;
+
+  margin-top: 4px;
+}
+
+/* =========================================
+   PROJECT OFFERS
+========================================= */
+
+.project-offers {
+  margin-top: 22px;
+
+  border: 1px solid rgba(0, 170, 255, 0.18);
+
+  background: rgba(0, 170, 255, 0.02);
+
+  padding: 18px;
+}
+
+.offer-title {
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 8px;
+
+  letter-spacing: 2px;
+
+  color: var(--blue);
+
+  padding-bottom: 14px;
+
+  border-bottom: 1px solid rgba(0, 170, 255, 0.12);
+
+  margin-bottom: 5px;
+}
+
+.offer-list {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.offer {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 14px;
+
+  padding: 14px 5px;
+
+  border-bottom: 1px solid rgba(0, 170, 255, 0.08);
+
+  transition: 0.3s;
+}
+
+.offer:last-child {
+  border-bottom: none;
+
+  padding-bottom: 5px;
+}
+
+.offer:hover {
+  transform: translateX(5px);
+
+  background: rgba(0, 170, 255, 0.025);
+}
+
+.offer-icon {
+  min-width: 32px;
+
+  height: 32px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid rgba(0, 200, 255, 0.3);
+
+  color: var(--blue-bright);
+
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 11px;
+
+  box-shadow: 0 0 8px rgba(0, 170, 255, 0.08);
+}
+
+.offer strong {
+  display: block;
+
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 8px;
+
+  letter-spacing: 1px;
+
+  color: var(--blue-light);
+
+  margin-bottom: 5px;
+}
+
+.offer small {
+  display: block;
+
+  color: #536d7b;
+
+  font-size: 9px;
+
+  line-height: 1.6;
+}
+
+/* =========================================
+   FORM BOX
+========================================= */
+
+.form-box {
+  border: 1px solid var(--border);
+
+  background: rgba(3, 12, 20, 0.85);
+
+  padding: 8px;
+
+  box-shadow: 0 0 40px rgba(0, 120, 255, 0.05);
+}
+
+/* =========================================
+   FORM HEADER
+========================================= */
+
+.form-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  padding: 16px 20px;
+
+  border-bottom: 1px solid var(--border);
+
+  color: var(--blue);
+
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+}
+
+.terminal-dots {
+  color: #28536a;
+
+  letter-spacing: 4px;
+}
+
+/* =========================================
+   FORM
+========================================= */
+
+form {
+  padding: 25px 20px;
+}
+
+.input-row {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 15px;
+}
+
+.input-group {
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  display: block;
+
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 8px;
+
+  letter-spacing: 2px;
+
+  color: #668493;
+
+  margin-bottom: 8px;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  width: 100%;
+
+  background: #02070c;
+
+  border: 1px solid rgba(0, 170, 255, 0.18);
+
+  color: var(--white);
+
+  padding: 13px;
+
+  outline: none;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 12px;
+
+  transition: 0.3s;
+}
+
+.input-group textarea {
+  resize: vertical;
+
+  min-height: 120px;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+  color: #304653;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+  border-color: var(--blue);
+
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.08);
+}
+
+.input-group select {
+  color: #6f8b9a;
+
+  cursor: pointer;
+}
+
+/* =========================================
+   BUTTON
+========================================= */
+
+button {
+  width: 100%;
+
+  border: 1px solid var(--blue);
+
+  background: linear-gradient(
+    90deg,
+    rgba(0, 120, 255, 0.12),
+    rgba(0, 210, 255, 0.08)
+  );
+
+  color: var(--blue-bright);
+
+  padding: 17px;
+
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  cursor: pointer;
+
+  box-shadow: 0 0 12px rgba(0, 170, 255, 0.1);
+
+  transition: 0.3s;
+}
+
+button:hover {
+  background: rgba(0, 180, 255, 0.12);
+
+  box-shadow: 0 0 25px rgba(0, 170, 255, 0.25);
+}
+
+button strong {
+  font-size: 20px;
+
+  transition: 0.3s;
+}
+
+button:hover strong {
+  transform: translateX(5px);
+}
+
+button.sending {
+  opacity: 0.7;
+
+  pointer-events: none;
+}
+
+button.success {
+  border-color: var(--blue-bright);
+
+  box-shadow: 0 0 25px rgba(0, 220, 255, 0.25);
+}
+
+/* =========================================
+   FORM STATUS
+========================================= */
+
+.form-note {
+  text-align: center;
+
+  margin-top: 13px;
+
+  color: #3e5967;
+
+  font-size: 8px;
+}
+
+.form-success {
+  color: var(--blue-bright) !important;
+
+  text-shadow: 0 0 10px rgba(0, 220, 255, 0.4);
+}
+
+.form-error {
+  color: #ff5577 !important;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+  border-top: 1px solid var(--border);
+
+  padding-top: 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  color: #46616f;
+}
+
+.footer-name {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.mini-avatar {
+  width: 35px;
+
+  height: 35px;
+
+  border: 1px solid var(--blue);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: var(--blue-bright);
+
+  font-family: "Orbitron", sans-serif;
+
+  box-shadow: 0 0 10px rgba(0, 170, 255, 0.15);
+}
+
+.footer-name strong {
+  display: block;
+
+  color: #6e8b9a;
+
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 9px;
+
+  letter-spacing: 1px;
+}
+
+.footer-name span {
+  display: block;
+
+  margin-top: 4px;
+
+  font-size: 8px;
+
+  color: #3e5967;
+}
+
+.footer-status {
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 8px;
+
+  letter-spacing: 2px;
+
+  color: #456b7d;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.online-dot {
+  width: 6px;
+
+  height: 6px;
+
+  background: var(--blue-bright);
+
+  border-radius: 50%;
+
+  box-shadow: 0 0 8px var(--blue-bright);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+  .worker-left,
+  .worker-right {
+    opacity: 0.3;
+
+    transform: scale(0.7);
+  }
+
+  .worker-left {
+    left: -20px;
+  }
+
+  .worker-right {
+    right: -20px;
+  }
+
+  .contact {
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+  }
+}
+
+@media (max-width: 650px) {
+  .page {
+    width: 94%;
+
+    padding-top: 35px;
+  }
+
+  .hero {
+    min-height: 480px;
+  }
+
+  .status-content {
+    padding: 50px 20px;
+  }
+
+  .worker-left,
+  .worker-right {
+    display: none;
+  }
+
+  .robot {
+    bottom: 25px;
+  }
+
+  .services {
+    grid-template-columns: 1fr 1fr;
+
+    margin-bottom: 70px;
+  }
+
+  .service:nth-child(2) {
+    border-right: none;
+  }
+
+  .service:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .input-row {
+    grid-template-columns: 1fr;
+  }
+
+  footer {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  h1 {
+    font-size: 34px;
+  }
+
+  .status-panel {
+    width: 100%;
+  }
+
+  .small-heading {
+    font-size: 8px;
+
+    letter-spacing: 2px;
+  }
+
+  .contact-info h2 {
+    font-size: 36px;
+  }
+}
+/* =========================================
+   PROJECT APPROACH
+========================================= */
+
+.project-approach {
+  margin-top: 28px;
+
+  padding: 18px;
+
+  border-left: 2px solid var(--blue);
+
+  background: linear-gradient(90deg, rgba(0, 170, 255, 0.045), transparent);
+}
+
+.approach-title {
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 8px;
+
+  letter-spacing: 2px;
+
+  color: var(--blue);
+
+  margin-bottom: 15px;
+}
+
+.approach-items {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 13px;
+}
+
+.approach-item {
+  display: flex;
+
+  gap: 13px;
+
+  align-items: flex-start;
+}
+
+.approach-item > span {
+  min-width: 25px;
+
+  color: var(--blue-bright);
+
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 8px;
+
+  padding-top: 2px;
+}
+
+.approach-item strong {
+  display: block;
+
+  color: #b8eaff;
+
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 8px;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 3px;
+}
+
+.approach-item small {
+  display: block;
+
+  color: #536d7b;
+
+  font-size: 9px;
+
+  line-height: 1.5;
+}
+
+/* =========================================
+   BETTER ALIGNMENT
+========================================= */
+
+.contact {
+  align-items: stretch;
+}
+
+.contact-info {
+  padding-top: 0;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+.form-box {
+  margin-top: 48px;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+/* =========================================
+   AVAILABLE PROJECTS
+========================================= */
+
+.availability {
+  margin-top: 28px;
+
+  min-height: 60px;
+}
+
+/* =========================================
+   PROJECT SERVICES
+========================================= */
+
+.project-offers {
+  margin-top: auto;
+}
+
+/* =========================================
+   FORM TOP BAR
+========================================= */
+
+.form-topbar {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 14px 20px;
+
+  border-bottom: 1px solid var(--border);
+
+  background: rgba(0, 170, 255, 0.03);
+
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 8px;
+
+  letter-spacing: 1.5px;
+
+  color: #6f8b9a;
+}
+
+.form-topbar-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+}
+
+.form-topbar-item strong {
+  color: var(--blue-bright);
+
+  letter-spacing: 1px;
+}
+
+.form-topbar-divider {
+  width: 1px;
+
+  height: 11px;
+
+  background: var(--border);
+}
+
+/* =========================================
+   FORM HERO (fills leftover top space)
+========================================= */
+
+.form-hero {
+  flex-grow: 1;
+
+  min-height: 90px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-bottom: 1px solid var(--border);
+
+  background: radial-gradient(circle, rgba(0, 170, 255, 0.05), transparent 70%);
+}
+
+.thumbs-icon {
+  width: 160px;
+
+  height: 160px;
+
+  filter: drop-shadow(0 0 6px var(--blue-bright))
+    drop-shadow(0 0 20px var(--blue));
+
+  animation: thumbsFloat 2.6s ease-in-out infinite;
+}
+
+@keyframes thumbsFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-6deg);
+
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(6deg);
+
+    opacity: 1;
+  }
+}
